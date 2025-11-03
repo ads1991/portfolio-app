@@ -7,7 +7,7 @@ export default function Home() {
       id: 'instagram-clone',
       name: 'Photo Sharing App',
       description: 'Full-stack social media platform with React, FastAPI, AWS EC2, RDS, and S3 for media storage',
-      image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113',
+      image: '/photoshare-thumbnail.png',
     },
     {
       id: 'swiggy-expense-tracker',

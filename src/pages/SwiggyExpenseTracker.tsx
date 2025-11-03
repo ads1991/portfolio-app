@@ -63,19 +63,21 @@ export default function SwiggyExpenseTracker() {
         <section className="mb-12">
           <h2 className="text-2xl font-bold mb-6">How does it work?</h2>
           <div className="bg-card border rounded-lg overflow-hidden">
-            {/* GIF placeholder - replace src with actual GIF */}
-            <div className="aspect-video bg-muted flex items-center justify-center">
-              <img
-                src="/swiggy-demo.gif"
-                alt="Swiggy Expense Tracker Demo"
-                className="w-full h-full object-cover"
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  target.style.display = 'none';
-                  target.parentElement!.innerHTML = '<div class="flex items-center justify-center h-full text-muted-foreground">Demo GIF - Add /public/swiggy-demo.gif</div>';
-                }}
-              />
-            </div>
+            {/* GIF - clickable to open full size */}
+            <a href="/swiggy-demo.gif" target="_blank" rel="noopener noreferrer" className="block cursor-zoom-in">
+              <div className="aspect-video bg-muted flex items-center justify-center">
+                <img
+                  src="/swiggy-demo.gif"
+                  alt="Swiggy Expense Tracker Demo"
+                  className="w-full h-full object-cover hover:opacity-90 transition-opacity"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                    target.parentElement!.innerHTML = '<div class="flex items-center justify-center h-full text-muted-foreground">Demo GIF - Add /public/swiggy-demo.gif</div>';
+                  }}
+                />
+              </div>
+            </a>
             <div className="p-6">
               <ol className="space-y-3 text-muted-foreground">
                 <li className="flex items-start gap-3">

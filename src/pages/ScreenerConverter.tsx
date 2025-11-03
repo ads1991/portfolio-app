@@ -88,6 +88,33 @@ export default function ScreenerConverter() {
           </div>
         </section>
 
+        {/* Screenshots */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold mb-6">Screenshots</h2>
+          <div className="space-y-4">
+            {[
+              { src: '/screener-1.png', label: 'Company Overview - Market Cap & Key Metrics' },
+              { src: '/screener-2.png', label: 'Peer Comparison Table' },
+              { src: '/screener-3.png', label: 'Quarterly Results' },
+              { src: '/screener-4.png', label: 'Profit & Loss Statement' },
+              { src: '/screener-5.png', label: 'Balance Sheet' },
+            ].map((item, index) => (
+              <div key={index} className="bg-card border rounded-lg overflow-hidden">
+                <a href={item.src} target="_blank" rel="noopener noreferrer" className="cursor-zoom-in">
+                  <img
+                    src={item.src}
+                    alt={item.label}
+                    className="w-full h-auto hover:opacity-90 transition-opacity"
+                  />
+                </a>
+                <div className="p-3 text-center border-t">
+                  <p className="text-sm font-medium">{item.label}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
         {/* Conversion Examples */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold mb-6">Conversion Examples</h2>
@@ -125,47 +152,6 @@ export default function ScreenerConverter() {
             </table>
           </div>
           <p className="text-xs text-muted-foreground mt-2">* Based on exchange rate of ₹88.74 = $1</p>
-        </section>
-
-        {/* Installation */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-bold mb-6">Installation</h2>
-          <div className="bg-card border rounded-lg p-6">
-            <ol className="space-y-3">
-              <li className="flex items-start gap-3">
-                <span className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm shrink-0">1</span>
-                <span>Open Chrome and go to <code className="bg-muted px-2 py-1 rounded text-sm">chrome://extensions/</code></span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm shrink-0">2</span>
-                <span>Enable "Developer mode" using the toggle in the top right</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm shrink-0">3</span>
-                <span>Click "Load unpacked" button</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm shrink-0">4</span>
-                <span>Select the extension folder from the downloaded files</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm shrink-0">5</span>
-                <span>Visit <a href="https://www.screener.in" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">screener.in</a> and see USD values!</span>
-              </li>
-            </ol>
-          </div>
-        </section>
-
-        {/* Tech Stack */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-bold mb-6">Tech Stack</h2>
-          <div className="flex flex-wrap gap-2">
-            {["Manifest V3", "JavaScript", "Chrome Storage API", "Content Scripts", "CSS Injection"].map((tech) => (
-              <span key={tech} className="px-3 py-1 bg-green-500/10 text-green-600 rounded-full text-sm">
-                {tech}
-              </span>
-            ))}
-          </div>
         </section>
 
         {/* Use Cases */}
