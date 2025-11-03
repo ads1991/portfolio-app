@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Google OAuth Test</title>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .status {
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        .info { background: #d1ecf1; color: #0c5460; }
+    </style>
+</head>
+<body>
+    <h1>🧪 Google OAuth Configuration Test</h1>
+
+    <div class="status info">
+        <p><strong>Testing Client ID:</strong></p>
+        <code>1081649670169-a1c4fiqbp9ulh654r4olbh7bb15drmmm.apps.googleusercontent.com</code>
+    </div>
+
+    <div class="status info">
+        <p><strong>Current Origin:</strong></p>
+        <code id="origin"></code>
+    </div>
+
+    <h2>Test Google Sign-In Button:</h2>
+    <p>If the button appears below without errors in console, Google has accepted your origin!</p>
+
+    <div id="g_id_onload"
+         data-client_id="1081649670169-a1c4fiqbp9ulh654r4olbh7bb15drmmm.apps.googleusercontent.com"
+         data-callback="handleCredentialResponse">
+    </div>
+    <div class="g_id_signin" data-type="standard"></div>
+
+    <div id="result"></div>
+
+    <h2>Console Messages:</h2>
+    <div id="console" style="background: #f5f5f5; padding: 15px; border-radius: 5px; font-family: monospace; font-size: 12px; max-height: 300px; overflow-y: auto;"></div>
+
+    <script>
+        // Display current origin
+        document.getElementById('origin').textContent = window.location.origin;
+
+        // Capture console errors
+        const consoleDiv = document.getElementById('console');
+        const originalConsoleError = console.error;
+        const originalConsoleWarn = console.warn;
+        const originalConsoleLog = console.log;
+
+        function addToConsole(type, ...args) {
+            const message = args.map(arg =>
+                typeof arg === 'object' ? JSON.stringify(arg, null, 2) : String(arg)
+            ).join(' ');
+
+            const line = document.createElement('div');
+            line.style.color = type === 'error' ? 'red' : type === 'warn' ? 'orange' : 'green';
+            line.textContent = `[${type.toUpperCase()}] ${message}`;
+            consoleDiv.appendChild(line);
+            consoleDiv.scrollTop = consoleDiv.scrollHeight;
+        }
+
+        console.error = function(...args) {
+            addToConsole('error', ...args);
+            originalConsoleError.apply(console, args);
+
+            // Check for specific GSI errors
+            const message = args.join(' ');
+            if (message.includes('origin is not allowed')) {
+                showResult('❌ FAILED: Google has NOT accepted this origin yet', 'error');
+                showResult('⏰ Wait 5-10 more minutes and refresh this page', 'info');
+            }
+        };
+
+        console.warn = function(...args) {
+            addToConsole('warn', ...args);
+            originalConsoleWarn.apply(console, args);
+        };
+
+        console.log = function(...args) {
+            addToConsole('log', ...args);
+            originalConsoleLog.apply(console, args);
+        };
+
+        function handleCredentialResponse(response) {
+            console.log('✅ SUCCESS! Google OAuth is working!');
+            console.log('Received credential:', response.credential.substring(0, 50) + '...');
+            showResult('✅ SUCCESS! Google has accepted this origin!', 'success');
+            showResult('Your Google OAuth is configured correctly! 🎉', 'success');
+        }
+
+        function showResult(message, type) {
+            const resultDiv = document.getElementById('result');
+            const statusDiv = document.createElement('div');
+            statusDiv.className = 'status ' + type;
+            statusDiv.textContent = message;
+            resultDiv.appendChild(statusDiv);
+        }
+
+        // Listen for GSI library load
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                addToConsole('log', 'Page loaded, waiting for Google Sign-In library...');
+
+                // Check if button appeared
+                const button = document.querySelector('.g_id_signin');
+                if (button && button.children.length > 0) {
+                    addToConsole('log', '✅ Google button rendered successfully!');
+                    showResult('✅ Google button loaded! Try clicking it.', 'success');
+                } else {
+                    addToConsole('warn', '⚠️ Google button not rendered yet, check console for errors');
+                }
+            }, 2000);
+        });
+
+        // Add helpful instructions
+        setTimeout(() => {
+            const instructionsDiv = document.createElement('div');
+            instructionsDiv.className = 'status info';
+            instructionsDiv.innerHTML = `
+                <h3>📋 What to look for:</h3>
+                <ul>
+                    <li><strong>Green "[LOG]" messages:</strong> Things are working</li>
+                    <li><strong>Red "[ERROR]" with "origin is not allowed":</strong> Google hasn't propagated changes yet - wait more</li>
+                    <li><strong>Red "[ERROR]" with other messages:</strong> Configuration issue</li>
+                    <li><strong>No errors and button appears:</strong> ✅ You're good! Click the button to test.</li>
+                </ul>
+            `;
+            document.body.appendChild(instructionsDiv);
+        }, 500);
+    </script>
+</body>
+</html>

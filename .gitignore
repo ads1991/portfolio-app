@@ -1,0 +1,63 @@
+# Environment files
+.env
+.env.local
+.env.development
+.env.development.local
+.env.test
+.env.test.local
+.env.production
+.env.production.local
+.env*.local
+
+# Setup files
+setup.sh
+setup.bat
+*.setup
+
+# Documentation/Markdown files
+*.md
+
+# Claude generated files
+claude-*.html
+*-claude.html
+
+# Google Auth/OAuth files
+client_secret*.json
+credentials.json
+token.json
+*.p12
+*.pem
+service-account*.json
+google-credentials.json
+oauth*.json
+DEBUG_LOGIN
+DEBUG_LOGIN.*
+GOOGLE_OAUTH_SETUP.md
+GOOGLE_OAUTH_SETUP.html
+dev-login*
+*test-login*
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

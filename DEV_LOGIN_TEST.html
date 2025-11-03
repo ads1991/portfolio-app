@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dev Login Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        button {
+            background: #0066cc;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #0052a3;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f0f0f0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Instagram Clone - Dev Login</h1>
+    <p>Use this to bypass Google OAuth for testing</p>
+
+    <button onclick="devLogin()">Login as Test User</button>
+
+    <div id="result" class="result" style="display:none;"></div>
+
+    <script>
+        async function devLogin() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.style.display = 'block';
+            resultDiv.textContent = 'Logging in...';
+
+            try {
+                const response = await fetch('http://localhost:8000/api/v1/auth/dev/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        email: 'test@example.com',
+                        name: 'Test User'
+                    })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    localStorage.setItem('access_token', data.access_token);
+                    localStorage.setItem('refresh_token', data.refresh_token);
+                    resultDiv.textContent = 'Login successful! Redirecting...';
+                    resultDiv.style.background = '#d4edda';
+
+                    setTimeout(() => {
+                        window.location.href = 'http://localhost:5174/instagram';
+                    }, 1000);
+                } else {
+                    resultDiv.textContent = 'Login failed: ' + (data.detail || JSON.stringify(data));
+                    resultDiv.style.background = '#f8d7da';
+                }
+            } catch (error) {
+                resultDiv.textContent = 'Error: ' + error.message;
+                resultDiv.style.background = '#f8d7da';
+            }
+        }
+    </script>
+</body>
+</html>
