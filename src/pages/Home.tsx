@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom'
+import { Mail, Phone, Github, MapPin } from 'lucide-react'
 
 export default function Home() {
   const projects = [
     {
       id: 'instagram-clone',
-      name: 'Instagram Clone',
-      description: 'A full-featured Instagram clone with posts, likes, comments, and user profiles',
+      name: 'Photo Sharing App',
+      description: 'Full-stack social media platform with React, FastAPI, AWS EC2, RDS, and S3 for media storage',
       image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113',
     },
     {
@@ -22,44 +23,49 @@ export default function Home() {
     },
   ]
 
+  const skills = ['React.js', 'TypeScript', 'JavaScript', 'Redux', 'Tailwind CSS', 'Material UI', 'REST APIs', 'Python', 'Docker', 'AWS', 'Jest', 'OAuth 2.0']
+
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b">
-        <div className="container mx-auto px-4 py-6">
-          <h1 className="text-3xl font-bold">Portfolio</h1>
-        </div>
-      </header>
-
-      {/* Resume Section */}
-      <section className="container mx-auto px-4 py-12">
-        <h2 className="text-2xl font-bold mb-6">About Me</h2>
-        <div className="bg-card rounded-lg border p-6 space-y-4">
-          <div>
-            <h3 className="text-xl font-semibold mb-2">Full Stack Developer</h3>
-            <p className="text-muted-foreground">
-              Passionate developer with expertise in React, TypeScript, and modern web technologies.
-              Building elegant solutions to complex problems.
-            </p>
+      {/* Hero Section */}
+      <header className="border-b bg-gradient-to-br from-primary/5 to-primary/10">
+        <div className="container mx-auto px-4 py-10">
+          <h1 className="text-3xl md:text-4xl font-bold mb-4">Adhishree Ranpura</h1>
+          <div className="flex flex-wrap gap-3 text-sm mb-6">
+            <a href="mailto:adhishree1998@gmail.com" className="flex items-center gap-1.5 text-muted-foreground hover:text-primary transition-colors">
+              <Mail className="w-4 h-4" />
+              adhishree1998@gmail.com
+            </a>
+            <a href="tel:+917021341563" className="flex items-center gap-1.5 text-muted-foreground hover:text-primary transition-colors">
+              <Phone className="w-4 h-4" />
+              +91 7021341563
+            </a>
+            <a href="https://github.com/ads1991" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-muted-foreground hover:text-primary transition-colors">
+              <Github className="w-4 h-4" />
+              github.com/ads1991
+            </a>
+            <span className="flex items-center gap-1.5 text-muted-foreground">
+              <MapPin className="w-4 h-4" />
+              Mumbai
+            </span>
           </div>
-
           <div>
-            <h4 className="font-semibold mb-2">Skills</h4>
+            <h3 className="text-sm font-semibold text-muted-foreground mb-2">Skills</h3>
             <div className="flex flex-wrap gap-2">
-              {['React', 'TypeScript', 'Redux', 'Tailwind CSS', 'Node.js', 'Vite'].map((skill) => (
-                <span key={skill} className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">
+              {skills.map((skill) => (
+                <span key={skill} className="px-3 py-1.5 bg-primary/10 text-primary rounded-md text-sm font-medium">
                   {skill}
                 </span>
               ))}
             </div>
           </div>
         </div>
-      </section>
+      </header>
 
       {/* Projects Section */}
-      <section className="container mx-auto px-4 py-12">
-        <h2 className="text-2xl font-bold mb-6">Projects</h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <section className="container mx-auto px-4 py-8">
+        <h2 className="text-2xl font-bold mb-4">Projects</h2>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {projects.map((project) => (
             <Link
               key={project.id}
@@ -74,7 +80,7 @@ export default function Home() {
                 />
               </div>
               <div className="p-4">
-                <h3 className="text-xl font-semibold mb-2">{project.name}</h3>
+                <h3 className="text-lg font-semibold mb-1">{project.name}</h3>
                 <p className="text-muted-foreground text-sm">{project.description}</p>
               </div>
             </Link>

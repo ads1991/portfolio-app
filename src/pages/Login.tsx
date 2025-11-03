@@ -36,7 +36,7 @@ export default function Login() {
       <div className="w-full max-w-sm">
         <div className="bg-card border rounded-lg p-8">
           <h1 className="text-4xl font-bold text-center mb-8 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-600 bg-clip-text text-transparent">
-            Instagram
+            PhotoShare
           </h1>
 
           <div className="space-y-4">
@@ -71,7 +71,7 @@ export default function Login() {
 
         <div className="mt-4 bg-card border rounded-lg p-4 text-center text-sm">
           <span className="text-muted-foreground">
-            New to Instagram? Sign in with Google to get started!
+            New to PhotoShare? Sign in with Google to get started!
           </span>
         </div>
       </div>
