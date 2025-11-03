@@ -11,7 +11,7 @@ export default function Explore() {
   const posts = useAppSelector((state) => state.instagram.exploreFeed)
   const isLoading = useAppSelector((state) => state.instagram.isLoading)
   const [expandedPost, setExpandedPost] = useState<PostType | null>(null)
-  const [pressTimer, setPressTimer] = useState<NodeJS.Timeout | null>(null)
+  const [pressTimer, setPressTimer] = useState<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {
     dispatch(fetchExploreFeed())

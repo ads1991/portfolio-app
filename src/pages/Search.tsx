@@ -1,13 +1,12 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Search as SearchIcon, UserPlus, UserCheck } from 'lucide-react'
-import { useAppSelector, useAppDispatch } from '@/store/hooks'
+import { useAppSelector } from '@/store/hooks'
 import { userAPI, socialAPI } from '@/services/instagram.api'
 import type { UserProfileResponse } from '@/services/instagram.api'
 
 export default function Search() {
   const navigate = useNavigate()
-  const dispatch = useAppDispatch()
   const currentUser = useAppSelector((state) => state.auth.user)
   const [searchQuery, setSearchQuery] = useState('')
   const [searchResults, setSearchResults] = useState<UserProfileResponse[]>([])

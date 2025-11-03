@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import type { PayloadAction } from '@reduxjs/toolkit'
 import { feedAPI, postAPI, interactionAPI, socialAPI, userAPI } from '@/services/instagram.api'
-import type { PostResponse, CommentResponse, UserProfileResponse } from '@/services/instagram.api'
+import type { PostResponse, CommentResponse } from '@/services/instagram.api'
 
 // Transform API response to internal Post format
 const transformPost = (apiPost: PostResponse): Post => ({
