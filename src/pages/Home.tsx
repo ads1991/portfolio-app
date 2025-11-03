@@ -9,10 +9,16 @@ export default function Home() {
       image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113',
     },
     {
-      id: 'project-2',
-      name: 'Project 2',
-      description: 'Coming soon...',
-      image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085',
+      id: 'swiggy-expense-tracker',
+      name: 'Swiggy Expense Tracker',
+      description: 'Chrome extension + React dashboard to track and analyze your Swiggy, Instamart expenses',
+      image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38',
+    },
+    {
+      id: 'screener-converter',
+      name: 'Screener INR to USD',
+      description: 'Chrome extension that converts Indian Rupee values to USD on Screener.in for stock research',
+      image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3',
     },
   ]
 

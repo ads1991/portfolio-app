@@ -6,6 +6,8 @@ import ProtectedRoute from './components/ProtectedRoute'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import InstagramClone from './pages/InstagramClone'
+import SwiggyExpenseTracker from './pages/SwiggyExpenseTracker'
+import ScreenerConverter from './pages/ScreenerConverter'
 import FeedPage from './pages/FeedPage'
 import Explore from './pages/Explore'
 import Profile from './pages/Profile'
@@ -64,6 +66,8 @@ function App() {
               <Route path="profile/:userId" element={<Profile />} />
             </Route>
             <Route path="/projects/instagram-clone" element={<Navigate to="/login" replace />} />
+            <Route path="/projects/swiggy-expense-tracker" element={<SwiggyExpenseTracker />} />
+            <Route path="/projects/screener-converter" element={<ScreenerConverter />} />
             <Route path="/projects/:projectId" element={
               <div className="min-h-screen flex items-center justify-center">
                 <p className="text-2xl text-muted-foreground">Project Coming Soon</p>
