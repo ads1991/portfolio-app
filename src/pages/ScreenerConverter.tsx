@@ -1,4 +1,4 @@
-import { ArrowLeft, Chrome, Download, DollarSign, RefreshCw, Table } from 'lucide-react'
+import { ArrowLeft, Download, DollarSign } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 export default function ScreenerConverter() {
@@ -48,53 +48,6 @@ export default function ScreenerConverter() {
                 (Billions, Millions, Thousands) so you can instantly understand company valuations in global context.
               </p>
             </div>
-          </div>
-        </section>
-
-        {/* Features */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-bold mb-6">Features</h2>
-          <div className="grid md:grid-cols-2 gap-4">
-            <FeatureCard
-              icon={<RefreshCw className="w-5 h-5" />}
-              title="Real-time Conversion"
-              features={[
-                "Converts values as you browse",
-                "Updates on page navigation",
-                "Toggle conversion on/off",
-                "Customizable exchange rate"
-              ]}
-            />
-            <FeatureCard
-              icon={<Table className="w-5 h-5" />}
-              title="Smart Table Detection"
-              features={[
-                "Quarterly Results",
-                "Profit & Loss statements",
-                "Balance Sheet",
-                "Cash Flow statements"
-              ]}
-            />
-            <FeatureCard
-              icon={<DollarSign className="w-5 h-5" />}
-              title="Smart Formatting"
-              features={[
-                "Auto formats to B/M/K units",
-                "Handles Indian number format",
-                "Preserves percentage values",
-                "Skips non-monetary rows"
-              ]}
-            />
-            <FeatureCard
-              icon={<Chrome className="w-5 h-5" />}
-              title="Peer Comparison"
-              features={[
-                "Market Cap conversion",
-                "CMP (stock price) conversion",
-                "Quarterly figures",
-                "Works on all stock pages"
-              ]}
-            />
           </div>
         </section>
 
@@ -256,25 +209,6 @@ export default function ScreenerConverter() {
           </div>
         </section>
       </main>
-    </div>
-  )
-}
-
-function FeatureCard({ icon, title, features }: { icon: React.ReactNode; title: string; features: string[] }) {
-  return (
-    <div className="bg-card border rounded-lg p-6">
-      <div className="flex items-center gap-3 mb-4">
-        <div className="p-2 bg-primary/10 rounded-lg text-primary">{icon}</div>
-        <h3 className="font-semibold">{title}</h3>
-      </div>
-      <ul className="space-y-2">
-        {features.map((feature, i) => (
-          <li key={i} className="flex items-center gap-2 text-sm text-muted-foreground">
-            <span className="w-1.5 h-1.5 bg-green-500 rounded-full" />
-            {feature}
-          </li>
-        ))}
-      </ul>
     </div>
   )
 }
