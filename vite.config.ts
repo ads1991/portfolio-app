@@ -12,3 +12,4 @@ export default defineConfig({
   },
 })
 // Updated
+// Minor fix
